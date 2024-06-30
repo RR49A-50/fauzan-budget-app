@@ -6,6 +6,7 @@ use App\Http\Controllers\OutcameController;
 use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\RoleController;
 
 route::middleware('auth:api')->group(function(){
 
@@ -24,9 +25,16 @@ route::middleware('auth:api')->group(function(){
     //User
     route::get("/User",[UserController::class, "index"]);
     route::get("/User/{id}",[UserController::class, "show"]);
-    route::post("/User",[UserController::class, "store"]);
     route::delete("/User/{id}",[UserController::class, "destroy"]);
 
+    //Role
+    route::get("/Role",[RoleController::class, "index"]);
+    route::get("/Role/{id}",[RoleController::class, "show"]);
+    route::post("/Role",[RoleController::class, "store"]);
+    route::delete("/Role/{id}",[RoleController::class, "destroy"]);
 });
+
+route::post("/User",[UserController::class, "store"]);
+
     //Login
     route::post("/login",[AuthController::class, "login"]);

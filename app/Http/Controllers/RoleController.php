@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\Role;
 use Illuminate\Http\Request;
-use App\Services\UserService;
+use App\Services\RoleService;
 
-class UserController extends Controller
+class RoleController extends Controller
 {
-    public function __construct(protected UserService $service)
+    public function __construct(protected RoleService $service)
     {
 
     }
@@ -19,7 +19,7 @@ class UserController extends Controller
     public function index()
     {
         $data = $this->service->all();
-        return $this->response($data, "Sukses menampilkan data");
+        return $this->response($data, "Sukses menampilkan role");
     }
 
     /**
@@ -29,7 +29,7 @@ class UserController extends Controller
     {
         $payload = $request->all();
         $data = $this->service->create($payload);
-        return $this->response($data, "Sukses membuat data");
+        return $this->response($data, "Sukses membuat role");
     }
 
     /**
@@ -38,13 +38,13 @@ class UserController extends Controller
     public function show(int $id)
     {
         $data = $this->service->show($id);
-        return $this->response($data, "Sukses menampilkan data");
+        return $this->response($data, "Sukses menampilkan role");
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Outcame $outcame)
+    public function update(Request $request, Role $role)
     {
         //
     }
@@ -55,6 +55,6 @@ class UserController extends Controller
     public function destroy(int $id)
     {
         $data = $this->service->delete($id);
-        return $this->response($data, "Sukses menghapus data");
+        return $this->response($data, "Sukses menghapus role");
     }
 }
